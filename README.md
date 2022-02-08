@@ -1,1 +1,7 @@
 # csci-3308-spring22-011-02
+Application name - The Buff Planner
+
+Application description - The Buff Planner is a daily tracker that tracks activities of daily living. Activities of daily living (ADLs) are simple tasks such as brushing teeth, cooking breakfast, washing dishes, getting out of bed, etc…  These basic activities are used by mental health professionals as an indicator of functional status. The more activities performed signals positive mental health trends while failure to complete activities can be linked to declining mental health. 
+The metrics gathered will be input into graphs that will show ADLs completed over time. Mental health professionals can use these metrics in order to create a better tailored plan for their patients in a therapeutic setting. If a patient starts to complete less ADLs over time the mental health professional will be able to see this and have better outcomes when they next meet with their patients.
+
+Vision statement - For people that struggle with their mental health who need a daily activity tracker to see if their mental health is going in a positive or negative direction. The Buff Planner is a website that helps those people complete daily tasks that will benefit their mental health in the long run. Unlike ordinary task trackers, our product focuses on the mental health aspect of users to break cycles of bad habits and instill favorable new ones.
