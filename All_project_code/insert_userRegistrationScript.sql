@@ -7,9 +7,6 @@ INSERT INTO `adl_db`.`userregistration`
 VALUES
 ('testuser2@colorado.edu',
 'testuser2',
-password('12345678'),
+sha1('123456'),
 'First',
 'Last');
-
-SELECT *
-FROM userregistration;
