@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width = device-width" initial-scale="1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="home_style.css" type="text/css">
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0;">
+            <div class="container" style="text-align: center;">
+                <h1 style="color: dodgerblue;">Welcome to the Buff Planner.</h1>
+                <p style="font-weight: 300; color: rgb(141, 141, 141);">A website will take care of your health.</p>
+            </div>
+        </div>
+                
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 0;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="navbar">
+                        <a href="http://127.0.0.1:5501/test.html#" class="nav-link" target="_blank">Profile</a>
+                    </li>
+                    <li class="nav-item" id="navbar">
+                        <a href="#" class="nav-link" target="_blank">Therapist response</a>
+                    </li>
+                </ul>
+                <div class="form-inline">
+                        <a href="#LoginModal" class="btn btn-primary" data-toggle="modal">Login</a>
+                        <a href="#RegisModal" class="btn btn-primary" data-toggle="modal" onclick="openModal()">Register</a>
+                </div>
+            </div> 
+        </nav>
+
+        <!-- <nav class="navbar navbar-expand-sm bg-light">
+  
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Contacts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Settings
+                    </a>
+                </li>
+            </ul>
+        </nav> -->
+
+        <div class="modal fade" id="LoginModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-global">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align: center;">Login In Page</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="uname" placeholder="Username" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="pwd" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block login-btn" disabled>
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="RegisModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-global">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align: center;">Registeration Page</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="text" class="form-control" name="uname" placeholder="Username" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" name="ema" placeholder="###@###.com" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Tel:</label>
+                            <input type="tel" class="form-control" name="tel" placeholder="###-###-####" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" name="pwd" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password:</label>
+                            <input type="password" class="form-control" name="repwd" placeholder="Reenter Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block login-btn" disabled>
+                                Register
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div id="message" style="display: block;">
+                            <h3>Password must contain the following:</h3>
+                            <p id="lower" class="invalid">A <b>lowercase</b> letter</p>
+                            <p id="upper" class="invalid"> A <b>uppercase</b> letter</p>
+                            <p id="number" class="invalid">A <b>number</b></p>
+                            <p id="symbol" class="invalid">A <b>symbol</b> "!@#$%^&*()". </p>
+                            <p id="length" class="invalid">Minimum <b>10 characters</b></p>
+                            <p id="match" class="invalid">
+                                Password and Confirm password match
+                            </p>
+                        </div>
+                    </div>
+                </div> 
+            </div>       
+        </div>
+        
+        <div class="container" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>About our web</h2>
+                    <p>The website can help you take care of your health by letting you design the table of daily actives such as sports, foods menu, sleeping schedule, etc. The web will notify you with specific time you set up for each activities. Let go and try out.</p>
+                    <h2>Some Links:</h2>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Daily activities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">hospital appointment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"></a>
+                        </li>
+                    </ul>
+                    <div class="from-group" id="suggest">
+                        <label for="comment">Provide some suggestions for our website.</label>
+                        <textarea rows="5" id="comment" class="form-control"></textarea>
+                        <input type="submit" class="btn btn-primary" value="Submit!">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                            <div class="carousel slide" id="home" data-ride="carousel">
+                                <ul class="carousel-indicators">
+                                    <li data-target="#home" data-slide-to="0" class="active"></li>
+                                    <li data-target="#home" data-slide-to="1"></li>
+                                    <li data-target="#home" data-slide-to="2"></li>
+                                    <li data-target="#home" data-slide-to="3"></li>
+                                </ul>
+        
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="card">
+                                            <img class="card-img-top" src="img/hospital_worker.jpeg" alt="hospital_worker">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Hospital</h4>
+                                                <p class="card-text">Sign up the appointment with local hospital.</p>
+                                            </div>
+                                        </div>
+                                        <!-- <img src="img/hospital_worker.jpeg" alt="hospital_worker"> -->
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="card">
+                                            <img src="img/pharmacy.jpeg" alt="pharmacy" class="card-img-top">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Pharmacy</h4>
+                                                <p class="card-text">Get the prescription from your doctor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="card">
+                                            <img src="img/runner.jpeg" alt="runner" class="card-img-top">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Running keep your more healthy.</h4>
+                                                <p class="card-text">Set up some time slots for sports.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="card">
+                                            <img src="img/surfing.jpeg" alt="surfing" class="card-img-top">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Surfing</h4>
+                                                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <a href="#home" class="carousel-control-prev" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a href="#home" class="carousel-control-next" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                    
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-column">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <span class="footer-title">Product</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Therapist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Hosptial appointment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Plans & Prices</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 footer-column">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <span class="footer-title">Group member</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Noelle Chalepas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Chase Tullar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Tyler Rayborn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Barry Wang</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 footer-column">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <span class="footer-title">Contact & Support</span>
+                            </li>
+                            <li class="nav-item" id="phone">
+                                <span class="nav-link"><i class="fas fa-phone"></i> +123-456-7890</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-comments"></i> Live chat</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-star"></i> Give feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+          
+              <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+              
+                <div class="row text-center">
+                    <div class="col-md-4 box">
+                        <span class="copyright quick-links">Copyright &copy; Buff Planner <script>document.write(new Date().getFullYear())</script>
+                        </span>
+                    </div>
+                    <div class="col-md-4 box">
+                        <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 box">
+                        <ul class="list-inline quick-links">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
