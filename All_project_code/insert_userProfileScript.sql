@@ -1,0 +1,28 @@
+INSERT INTO `adl_db`.`userprofile`
+(`userRegistration_email`,
+`mobile_phone`,
+`address_line_1`,
+`address_line_2`,
+`postcode`,
+`state`,
+`city`,
+`country`,
+`occupation`,
+`completed_ADL_count`,
+`total_ADL`,
+`total_month_completed_ADL_count`,
+`total_week_completed_ADL_count`)
+VALUES
+("testuser1@colorado.edu",
+"555-555-5555",
+"Some street",
+"Apt Number",
+"55555-5555",
+"CO",
+"Boulder",
+"United States",
+"Student",
+11,
+2,
+10,
+7);
