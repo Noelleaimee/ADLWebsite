@@ -8,15 +8,15 @@ services:
     # All_project_code/db_password.txt
     # All_project_code/db_root_password.txt
     environment:
-      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       MYSQL_DATABASE: adl_db
       MYSQL_USER: adl
-      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_PASSWORD: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD: /run/secrets/db_root_password
     secrets:
       - db_root_password
       - db_password
     expose:
-      - "5432"                                  
+      - "3306"                                  
     volumes:
       - adl-db:/var/lib/mysql  # Creates a docker managed volume to persist your data
       - ./init_data:/docker-entrypoint-initdb.d # Binds ./init_data to docker-entrypoint-initdb.d
@@ -27,10 +27,10 @@ services:
     image: node:12
     user: "node"                                # Use a non-root user node
     working_dir: /home/node/app                 # with home directory /home/node/app
-    # environment:
-    #   - NODE_ENV=production                   # << Use this when deploying your application,
-    #                                           #   currently we have it off so that changes to
-    #                                           #   *.ejs are visible without restarting docker-compose.
+    environment:
+      - NODE_ENV=production                   # << Use this when deploying your application,
+                                              #   currently we have it off so that changes to
+                                              #   *.ejs are visible without restarting docker-compose.
     depends_on:
       - db                                      # This indicates that docker should start the database first,
                                                 # otherwise our website would have no data.
