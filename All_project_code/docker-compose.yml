@@ -1,6 +1,7 @@
 services:
   # This section defines the MySQL database
-  db:
+  mysqldb:
+    platform: linux/x86_64
     image: mysql:latest
     # Environment variables to setup mysql
     # Using secrets to store passwords
@@ -9,8 +10,7 @@ services:
     # All_project_code/db_root_password.txt
     environment:
       MYSQL_DATABASE: adl_db
-      MYSQL_USER: adl
-      MYSQL_PASSWORD: qwer1234
+      MYSQL_USER: mysql
       MYSQL_ROOT_PASSWORD: 1234qwer
     # secrets:
     #   - db_root_password
@@ -24,7 +24,7 @@ services:
 
   # ------------------------------------------- # This section defines our Node.js image.
   web:
-    image: node:12
+    image: node:14
     user: "node"                                # Use a non-root user node
     working_dir: /home/node/app                 # with home directory /home/node/app
     environment:
@@ -32,7 +32,7 @@ services:
                                               #   currently we have it off so that changes to
                                               #   *.ejs are visible without restarting docker-compose.
     depends_on:
-      - db                                      # This indicates that docker should start the database first,
+      - mysqldb                                      # This indicates that docker should start the database first,
                                                 # otherwise our website would have no data.
     ports:
         - "3000:3000"                           # Here we do need to publish the port for viewing on the host.

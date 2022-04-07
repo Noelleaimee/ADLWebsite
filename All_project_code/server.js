@@ -11,20 +11,18 @@ var bodyParser = require('body-parser'); //Ensure our body-parser tool has been 
 app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-//Create Database Connection
-var mysql = require('mysql2');
+// Create Database Connection
+const mysql = require("mysql2");
 
-var con = mysql.createConnection({
-    host: "db",
-    user: "root",
+const con = mysql.createPool({
+	connectionLimit: 10,
+    host: "127.0.0.1",
+    user: "mysql",
     password: "1234qwer",
-    port: "3306"
+    database: "adl_db"
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Database connected.");
-});
+console.log(con)
 
 // login page
 app.get('/', function(req, res) {
