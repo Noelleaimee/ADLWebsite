@@ -10,11 +10,11 @@ services:
     environment:
       MYSQL_DATABASE: adl_db
       MYSQL_USER: adl
-      MYSQL_PASSWORD: /run/secrets/db_password
-      MYSQL_ROOT_PASSWORD: /run/secrets/db_root_password
-    secrets:
-      - db_root_password
-      - db_password
+      MYSQL_PASSWORD: qwer1234
+      MYSQL_ROOT_PASSWORD: 1234qwer
+    # secrets:
+    #   - db_root_password
+    #   - db_password
     expose:
       - "3306"                                  
     volumes:
@@ -43,11 +43,11 @@ services:
     command: "npm start"                        # This is a semi-hack for this lab that runs both npm install
                                                 # and node index.js (see the prestart command in package.json)
 
-secrets:
-   db_password:
-     file: db_password.txt
-   db_root_password:
-     file: db_root_password.txt
+# secrets:
+#    db_password:
+#      file: db_password.txt
+#    db_root_password:
+#      file: db_root_password.txt
 
 # This defines our volume(s), which will perist throughout startups.
 # If you want to get rid of a hanging volume, e.g. to test your database init,
