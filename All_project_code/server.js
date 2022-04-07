@@ -26,6 +26,28 @@ con.connect(function(err) {
     console.log("Database connected.");
 });
 
+// login page
+app.get('/', function(req, res) {
+	res.render('pages/login',{
+		local_css:"signin.css",
+		my_title:"Login Page"
+	});
+});
+
+// registration page
+app.get('/registration', function(req, res) {
+	res.render('pages/registration',{
+		my_title:"Registration Page"
+	});
+});
+
+// home page
+app.get('/home', function(req, res) {
+	res.render('pages/home',{
+		my_title:"Home Page"
+	});
+});
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
