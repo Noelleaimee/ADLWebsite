@@ -211,3 +211,120 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-03-31 12:33:47
+
+INSERT INTO `adl_db`.`useradl`
+(`userRegistration_email`,
+`user_ADL_name`,
+`user_ADL_description`,
+`times_ADL_completed`,
+`times_ADL_completed_week`,
+`times_ADL_completed_month`)
+VALUES
+("testuser1@colorado.edu",
+"Brush teeth",
+"Everyday I brush my teeth",
+2,
+1,
+2);
+
+INSERT INTO `adl_db`.`useradl`
+(`userRegistration_email`,
+`user_ADL_name`,
+`user_ADL_description`,
+`times_ADL_completed`,
+`times_ADL_completed_week`,
+`times_ADL_completed_month`)
+VALUES
+("testuser1@colorado.edu",
+"Make breakfast",
+"Everyday I make breakfast",
+9,
+6,
+8);
+
+INSERT INTO `adl_db`.`useradl`
+(`userRegistration_email`,
+`user_ADL_name`,
+`user_ADL_description`,
+`times_ADL_completed`,
+`times_ADL_completed_week`,
+`times_ADL_completed_month`)
+VALUES
+("testuser2@colorado.edu",
+"Brush teeth",
+"Everyday I brush my teeth",
+20,
+2,
+20);
+
+
+SELECT *
+FROM `adl_db`.`useradl`;
+
+INSERT INTO `adl_db`.`userprofile`
+(`userRegistration_email`,
+`mobile_phone`,
+`address_line_1`,
+`address_line_2`,
+`postcode`,
+`state`,
+`city`,
+`country`,
+`occupation`,
+`completed_ADL_count`,
+`total_ADL`,
+`total_month_completed_ADL_count`,
+`total_week_completed_ADL_count`)
+VALUES
+("testuser1@colorado.edu",
+"555-555-5555",
+"Some street",
+"Apt Number",
+"55555-5555",
+"CO",
+"Boulder",
+"United States",
+"Student",
+11,
+2,
+10,
+7);
+
+INSERT INTO `adl_db`.`userregistration`
+(`email`,
+`username`,
+`password`,
+`first_name`,
+`last_name`)
+VALUES
+('testuser1@colorado.edu',
+'testuser1',
+sha1('123456'),
+'First',
+'Last');
+
+INSERT INTO `adl_db`.`userregistration`
+(`email`,
+`username`,
+`password`,
+`first_name`,
+`last_name`)
+VALUES
+('testuser2@colorado.edu',
+'testuser2',
+sha1('12345'),
+'First',
+'Last');
+
+INSERT INTO `adl_db`.`userregistration`
+(`email`,
+`username`,
+`password`,
+`first_name`,
+`last_name`)
+VALUES
+('testuser3@colorado.edu',
+'testuser3',
+sha1('1234567'),
+'First',
+'Last');
