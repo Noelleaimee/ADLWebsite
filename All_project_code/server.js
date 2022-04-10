@@ -46,6 +46,20 @@ app.get('/home', function(req, res) {
 	});
 });
 
+// graph page
+app.get('/graph', function(req, res) {
+	res.render('pages/graph',{
+		my_title:"Graph Page"
+	});
+});
+
+// ADL page
+app.get('/ADL', function(req, res) {
+	res.render('pages/ADL_page',{
+		my_title:"ADL Page"
+	});
+});
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
