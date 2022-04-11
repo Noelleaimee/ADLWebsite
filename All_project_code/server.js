@@ -26,18 +26,72 @@ console.log(con)
 
 // login page
 app.get('/', function(req, res) {
-	res.render('pages/login',{
-		local_css:"signin.css",
-		my_title:"Login Page"
-	});
+	var username = req.query.uname;
+	var password = req.query.pwd;
+	var loginQuery = "Select username from userregistration where username = '" + username + "' and password = '" + password + "';";
+
+	db.task('login', task => {
+		return task.batch([
+			task.any(loginQuery)
+		]);
+	})
+	.then(data => {
+		if(data[0].length > 0){
+			var user = data[0][0].username;
+			return res.redirect("/home")
+		} else {
+			res.render('pages/login', {
+				my_title: "Login Page",
+				local_css: "signin.css",
+				username: '',
+				error: 'User not found.'
+			})
+		}
+	})
+
+	.catch(err => {
+		console.log('error', err)
+		res.render('pages/login', {
+			username: '',
+			error: 'User not found.'
+		})
+	})
+	// res.render('pages/login',{
+	// 	local_css:"signin.css",
+	// 	my_title:"Login Page"
+	// });
 });
 
 // registration page
-app.get('/registration', function(req, res) {
-	res.render('pages/registration',{
-		my_title:"Registration Page"
-	});
-});
+app.post('/registration', function(req, res) {
+	var username = req.body.uname;
+	var email = req.body.email;
+	var password = req.body.pwd;
+	var phone = req.body.phone;
+	var insert_statement = "insert into userregistration(email, username, password) value ('" + email + "', '" + username + "', '" + password + "');";
+  
+	db.task('register', task => {
+	  return task.batch([
+	  task.any(insert_statement),
+	  ]);
+	})
+	.then(data => {
+		  res.render('pages/registration', {
+			  my_title: "Users' registration",
+			  users: username,
+			  user_info: data[0]
+		  })
+	  })
+  
+	  .catch(err => {
+		  console.log('error', err);
+		  res.render('pages/registration', {
+			  my_title: "Users' registration",
+			  users:'',
+			  user_info:'',
+		  })
+	  });
+  });
 
 // home page
 app.get('/home', function(req, res) {
