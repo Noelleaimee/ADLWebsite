@@ -73,11 +73,14 @@ app.get('/login', function(req, res) {
 		]);
 	})
 	.then(data => {
-		console.log(data)
-		res.render('pages/home',{
-			local_css:"home_style.css",
-			my_title:"Home Page"
-		});
+		console.log(data[0][0], data[0][0].passwords)
+		if (data[0][0].passwords == password)
+		{
+			res.render('pages/home',{
+				local_css:"home_style.css",
+				my_title:"Home Page"
+			});
+		}
 	})
 
 	.catch(err => {
