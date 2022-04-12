@@ -60,7 +60,7 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
 app.get('/login', function(req, res) {
 	var username = req.query.uname;
 	var password = req.query.pwd;
-	var loginQuery = "Select username from userregistration where username = '" + username + "' and password = '" + password + "';";
+	var loginQuery = "Select username from userregistration where username = '" + username + "' and passwords = '" + password + "';";
 
 	db.task('login', task => {
 		return task.batch([
