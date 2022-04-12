@@ -51,16 +51,21 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
 
 
 // login page
-// app.get('/', function(req, res) {
-// 	res.render('pages/login', {
-// 		my_title: "Login Page",
-// 		local_css: "signin.css"
-// 	})
-// })
+app.get('/', function(req, res) {
+	res.render('pages/login', {
+		my_title: "Login Page",
+		local_css: "signin.css"
+	})
+})
 app.get('/login', function(req, res) {
 	var username = req.query.uname;
 	var password = req.query.pwd;
-	var loginQuery = "Select username from userregistration where username = '" + username + "' and passwords = '" + password + "';";
+	var loginQuery = "Select username, passwords from userregistration where username = '" + username + "' and passwords = '" + password + "';";
+
+	// res.render('pages/login',{
+	// 	local_css:"signin.css",
+	// 	my_title:"Login Page"
+	// });
 
 	db.task('login', task => {
 		return task.batch([
@@ -69,7 +74,10 @@ app.get('/login', function(req, res) {
 	})
 	.then(data => {
 		console.log(data)
-		
+		res.render('pages/home',{
+			local_css:"home_style.css",
+			my_title:"Home Page"
+		});
 	})
 
 	.catch(err => {
@@ -130,6 +138,33 @@ app.get('/home', function(req, res) {
 		local_css: "home_style.css",
 		my_title:"Home Page"
 	});
+});
+
+// prof_settings page
+app.get('/prof_settings', function(req, res) {
+	res.render('pages/prof_settings',{
+		local_css: "home_style.css",
+		my_title:"Prof_settings Page"
+	});
+
+	// $(savebutton).on('click', function() {
+	// 	alert(firstname);
+	// })
+
+});
+
+app.post('/prof_settings', function(req, res) {
+	
+	var firstname = req.body.fName;
+	var lastname = req.body.lName;
+	var savebutton = req.body.save_button;
+
+	console.log(firstname, lastname);
+
+	// $(savebutton).on('click', function() {
+	// 	alert(firstname);
+	// })
+
 });
 
 
