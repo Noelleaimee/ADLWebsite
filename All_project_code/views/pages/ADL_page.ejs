@@ -14,7 +14,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a href="#" class="navbar-brand">
-                <img src="img/Cu logo.png" alt="Logo" style="width: 40px;">
+                <img src="../resources/img/Cu logo.png" alt="Logo" style="width: 40px;">
             </a>
              <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto">
@@ -48,52 +48,26 @@
 
     <h2>ADL form</h2>
     <p>Please fill out the form below in its entirety.</p>
-    <form>
-      <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname" value="John"><br>
-      <label for="lname">Date:</label><br>
-      <input type="text" ccid="lname" name="lname" value="Monday">
-    </form>
+<form action="/ADL_page" method="post">
+      <label for="fname">Email:</label><br>
+      <input type="text" id="user_email" name="user_email" value=""><br>
 
+      <label for="lname">First name:</label><br>
+      <input type="text" ccid="fname" name="fname" value=""><br>
 
-    <h2>Radio Buttons</h2>
-    <p>On a scale of 1-6, how does your mood feel today?:</p>
-    <form>
-        <input type="radio" id="html" name="1" value="HTML">
-        <label for="html">1 - Low</label><br>
-        
-        <input type="radio" id="css" name="2" value="CSS">
-        <label for="css">2</label><br>
-        
-        <input type="radio" id="javascript" name="3" value="JavaScript">
-        <label for="javascript">3 - Medium</label><br>
-        
-        <input type="radio" id="html" name="4" value="HTML">
-        <label for="html">4</label><br>
-        
-        <input type="radio" id="css" name="5" value="CSS">
-        <label for="css">5</label><br>
-        
-        <input type="radio" id="javascript" name="6" value="JavaScript">
-        <label for="javascript">6 - high</label>
-        
-    </form> 
+      <label for="lname">Description:</label><br>
+      <input type="text" ccid="description" name="description" value=""><br>
 
+      <label for="fname">Total completed ADL's:</label><br>
+      <input type="text" id="total_ADL" name="total_ADL" value=""><br>
 
-<h2>Checkboxes</h2>
-<p>Please select words that describe your <strong> mood</strong> today:</p>
+      <label for="lname">Completed ADL's for this week:</label><br>
+      <input type="text" ccid="week_ADL" name="week_ADL" value=""><br>
+      
+      <label for="lname">Completed ADL's for this month:</label><br>
+      <input type="text" ccid="month_ADL" name="month_ADL" value=""><br><br>
 
-<form action="/action_page.php">
-  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-  <label for="vehicle1"> Depressed</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-  <label for="vehicle2"> Neutral</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle3"> Happy</label><br><br>
-  <input type="submit" value="Submit">
-</form> 
-
+    <button type="submit" id="register_button" class="btn btn-success">Save ADL</button>
+</form>
 </body>
-
-
 </html>

@@ -200,6 +200,75 @@ app.post('/prof_settings', function(req, res) {
 
 });
 
+//graph attempt
+app.get('/graph', function(req, res) {
+	var query1 = 'select * from useradl;';
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(query1),
+		]);
+	})
+	.then(data => {
+		//console.log(data[0]);
+		res.render('pages/graph',{
+				my_title: "Page Title Here",
+				data: data[0]
+			})
+	})
+	.catch(err => {
+		// display error message in case an error
+			console.log('error', err);
+			res.render('pages/graph',{
+				my_title: "Page Title Here",
+				data: '',
+				result_2: '',
+				result_3: ''
+			})
+		});
+	});
+
+//end
+
+// ADL page
+app.get('/ADL_page', function(req, res) {
+	res.render('pages/ADL_page',{
+		my_title:"ADL Page"
+	});
+});
+
+ app.post('/ADL_page', function(req, res) {
+ 	var email_ADL = req.body.user_email;
+ 	var user_ADL_name = req.body.fname;
+ 	var user_ADL_description = req.body.description;
+ 	var times_ADL_completed = req.body.total_ADL;
+ 	var times_ADL_completed_week = req.body.week_ADL;
+ 	var times_ADL_completed_month = req.body.month_ADL;
+ 	var insert_statement = "INSERT into useradl(email, user_ADL_name, user_ADL_description, times_ADL_completed, times_ADL_completed_week, times_ADL_completed_month) values ('" + email_ADL + "', '" + user_ADL_name + "', '" + user_ADL_description + "', '" + times_ADL_completed + "', '"+ times_ADL_completed_week + "', '"+ times_ADL_completed_month + "');";
+	 
+	db.task('ADL_page', task => {
+		return task.batch([
+			task.any(insert_statement)
+		])
+	})
+	.then(data => {
+		console.log(data[0])
+		  res.render('pages/ADL_page', {
+			  my_title: "ADL page",
+			  users: '',
+			  user_info: ''
+		  })
+	  })
+  
+	  .catch(err => {
+		  console.log('error', err);
+		  res.render('pages/ADL_page', {
+			  my_title: "ADL page",
+			  users:'',
+			  user_info:'',
+		  })
+	  });
+  });
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
