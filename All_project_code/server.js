@@ -286,7 +286,7 @@ app.get('/profile', function(req, res) {
 		console.log(info[0][0].firstname)
 		res.render('pages/Profile', {
 			my_title: "Profile_info",
-			user_info: info[0]
+			user_info: info[0][0]
 		})
 	})
 	.catch(err => {
