@@ -156,6 +156,14 @@ app.get('/prof_settings', function(req, res) {
 
 });
 
+// DELETE
+app.get('/Profile_page', function(req, res) {
+	res.render('pages/Profile_page', {
+		my_title: "Profile page",
+		username: '',
+	})
+});
+
 app.post('/prof_settings', function(req, res) {
 	
 	var firstname = req.body.fName;
@@ -183,7 +191,8 @@ app.post('/prof_settings', function(req, res) {
 		console.log(data)
 		res.render('pages/Profile_page', {
 			my_title: "Profile page",
-			username: username,
+			data: data,
+			fname: firstname
 		})
 	})
 	.catch(err => {
@@ -199,6 +208,9 @@ app.post('/prof_settings', function(req, res) {
 	// })
 
 });
+
+// adl page
+
 
 
 // set the view engine to ejs
