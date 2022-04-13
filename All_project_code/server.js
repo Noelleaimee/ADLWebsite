@@ -200,6 +200,18 @@ app.post('/prof_settings', function(req, res) {
 
 });
 
+app.get('/Profile_page', function(req, res) {
+	res.render('pages/Profile_page', {
+		my_title: "Profile_page"
+	})
+})
+
+app.get('/ADL_page', function(req, res) {
+	res.render('pages/ADL_page', {
+		my_title: "ADL_page"
+	})
+})
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
