@@ -160,9 +160,39 @@ app.post('/prof_settings', function(req, res) {
 	
 	var firstname = req.body.fName;
 	var lastname = req.body.lName;
-	var savebutton = req.body.save_button;
+	var mobileNumber = req.body.phone;
+	var address1 = req.body.address1;
+	var address2 = req.body.address2;
+	var postcode = req.body.postcode;
+	var state = req.body.state;
+	var area = req.body.area;
+	var emailID = req.body.email;
+	var occupation = req.body.occupation;
+	var country = req.body.country;
+	var region = req.body.region;
+	var insert = "insert into userprofile(email, mobile_phone, address_line_1, address_line_2, postcode, user_state, city, country, occupation) values ('"+ emailID + "', '"+ mobileNumber +"', '"+ address1 +"', '"+ address2 +"', '"+ postcode +"', '"+ state +"', '"+ area +"', '"+ country +"', '"+ occupation +"');";
+	var username = "select username from userregistration where firstname = '"+ firstname +"' and lastname = '"+ lastname +"';";
 
 	console.log(firstname, lastname);
+	db.task('register', task => {
+		return task.batch([
+			task.any(insert)
+		]);
+	})
+	.then(data => {
+		console.log(data)
+		res.render('pages/Profile_page', {
+			my_title: "Profile page",
+			username: username,
+		})
+	})
+	.catch(err => {
+		console.log('error', err)
+		res.render('pages/prof_settings', {
+			my_title: "Profile page",
+			username: '',
+		})
+	})
 
 	// $(savebutton).on('click', function() {
 	// 	alert(firstname);
