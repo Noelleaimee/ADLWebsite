@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 0;">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 0; margin-bottom: 10;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,6 +68,22 @@
                     <tr>
                         <th>FirstName</th>
                         <td><% if(user_info) { %> <%- user_info.firstname %> <% } %></td>
+                    </tr>
+                    <tr>
+                        <th>LastName</th>
+                        <td><% if(user_info) { %> <%- user_info.lastname %> <% } %></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td><% if(user_info) { %> <%- user_info.email %> <% } %></td>
+                    </tr>
+                    <tr>
+                        <th>Country</th>
+                        <td><% if(user_info) { %> <%- user_info.country %> <% } %></td>
+                    </tr>
+                    <tr>
+                        <th>Area</th>
+                        <td><% if(user_info) { %> <%- user_info.city %> <% } %></td>
                     </tr>
                 </table>
             </form>
