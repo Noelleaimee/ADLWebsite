@@ -73,7 +73,7 @@ app.get('/login', function(req, res) {
 		]);
 	})
 	.then(data => {
-		console.log(data[0][0], data[0][0].passwords)
+		// console.log(data[0][0], data[0][0].passwords)
 		if (data[0][0].passwords == password)
 		{
 			res.render('pages/home',{
@@ -117,7 +117,7 @@ app.post('/registration', function(req, res) {
 		])
 	})
 	.then(data => {
-		console.log(data[0])
+		//console.log(data[0])
 		  res.render('pages/login', {
 			  my_title: "Users' registration",
 			  users: '',
@@ -170,10 +170,9 @@ app.post('/prof_settings', function(req, res) {
 	var occupation = req.body.occupation;
 	var country = req.body.country;
 	var region = req.body.region;
-	var insert = "insert into userprofile(email, mobile_phone, address_line_1, address_line_2, postcode, user_state, city, country, occupation) values ('"+ emailID + "', '"+ mobileNumber +"', '"+ address1 +"', '"+ address2 +"', '"+ postcode +"', '"+ state +"', '"+ area +"', '"+ country +"', '"+ occupation +"');";
-	var username = "select username from userregistration where firstname = '"+ firstname +"' and lastname = '"+ lastname +"';";
+	var insert = "insert into userprofile(firstname, lastname, email, mobile_phone, address_line_1, address_line_2, postcode, user_state, city, country, occupation) values ('"+ firstname + "', '"+ lastname + "', '"+ emailID + "', '"+ mobileNumber +"', '"+ address1 +"', '"+ address2 +"', '"+ postcode +"', '"+ state +"', '"+ area +"', '"+ country +"', '"+ occupation +"');";
+	var username = "select username from userprofile where firstname = '"+ firstname + "' and '"+ lastname + "';";
 
-	console.log(firstname, lastname);
 	db.task('register', task => {
 		return task.batch([
 			task.any(insert)
@@ -182,15 +181,15 @@ app.post('/prof_settings', function(req, res) {
 	.then(data => {
 		console.log(data)
 		res.render('pages/Profile_page', {
-			my_title: "Profile page",
-			username: username,
+			my_title: "Profile setting page",
+			user: username, 
 		})
 	})
 	.catch(err => {
 		console.log('error', err)
 		res.render('pages/prof_settings', {
-			my_title: "Profile page",
-			username: '',
+			my_title: "Profile setting page",
+			user: '',
 		})
 	})
 
@@ -268,6 +267,37 @@ app.get('/ADL_page', function(req, res) {
 		  })
 	  });
   });
+app.get('/Profile_page', function(req, res) {
+	res.render('pages/Profile_page', {
+		my_title: "Profile page(demo)"
+	})
+})
+
+app.get('/profile', function(req, res) {
+	var user = "select * from userprofile;";
+
+	db.task('get_user', task => {
+		return task.batch([
+			task.any(user),
+		]);
+	})
+	.then(info => {
+		console.log(info[0])
+		console.log(info[0][0].firstname)
+		res.render('pages/Profile', {
+			my_title: "Profile_info",
+			user_info: info[0]
+		})
+	})
+	.catch(err => {
+		console.log('error', err)
+		res.render('pages/Profile', {
+			my_title: "Profile_info",
+			user_info: ''
+		})
+	});
+});	
+
 
 
 // set the view engine to ejs
